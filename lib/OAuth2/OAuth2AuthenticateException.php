@@ -41,7 +41,12 @@ class OAuth2AuthenticateException extends OAuth2ServerException {
     foreach ($this->errorData as $key => $value) {
       $header .= sprintf(', %s=%s', $key, $this->quotedString($value));
     }
-    $this->header = array('WWW-Authenticate' => $header);
+    $this->header = array(
+      'WWW-Authenticate' => $header,
+      'Access-Control-Allow-Headers' => '*',
+      'Access-Control-Allow-Methods' => '*',
+      'Access-Control-Allow-Origin' => '*'
+    );
   }
 
   public function getResponseHeaders() {
