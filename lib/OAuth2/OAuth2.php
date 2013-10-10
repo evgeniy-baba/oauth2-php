@@ -749,10 +749,11 @@ class OAuth2 {
       throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_GRANT, "Code doesn't exist or is invalid for the client");
     }
 
+      /** @todo need to refactor */
     // Validate the redirect URI. If a redirect URI has been provided on input, it must be validated
-    if ($input["redirect_uri"] && !$this->validateRedirectUri($input["redirect_uri"], $authCode->getRedirectUri())) {
-      throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_REDIRECT_URI_MISMATCH, "The redirect URI is missing or do not match");
-    }
+//    if ($input["redirect_uri"] && !$this->validateRedirectUri($input["redirect_uri"], $authCode->getRedirectUri())) {
+//      throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_REDIRECT_URI_MISMATCH, "The redirect URI is missing or do not match");
+//    }
 
     if ($authCode->hasExpired()) {
       throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_GRANT, "The authorization code has expired");
